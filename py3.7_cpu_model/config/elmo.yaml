@@ -3,6 +3,10 @@ GIT:
   addr: https://github.com/PaddlePaddle/models.git  
   path: task/models_repo
 
+ENV:
+  env1: "export http_proxy=http://172.19.57.45:3128"
+  env2: "export https_proxy=http://172.19.57.45:3128"
+
 TRAIN:
   step1:
     path: task/models_repo/PaddleNLP/legacy/pretrain_language_models/ELMo
