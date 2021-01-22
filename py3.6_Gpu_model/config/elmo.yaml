@@ -4,15 +4,17 @@ GIT:
   path: task/models_repo
 
 ENV:
-  env1: "export http_proxy=http://172.19.57.45:3128"
-  env2: "export https_proxy=http://172.19.57.45:3128"
+  http_proxy: "http://172.19.57.45:3128"
+  https_proxy: "http://172.19.57.45:3128"
 
 TRAIN:
   step1:
     path: task/models_repo/PaddleNLP/legacy/pretrain_language_models/ELMo
     # env:
-    #   env1: None
-    run: python train.py --train_path=data/train/sentence_file_*  --test_path=data/dev/sentence_file_* --vocab_path data/vocabulary_min5k.txt --learning_rate 0.2 --use_gpu False --all_train_tokens 35479 --max_epoch 1 --log_interval 5 --dev_interval 20 --local True --batch_size 32 --shuffle false --random_seed 100 --enable_ce| python _ce.py
+    #   key: value
+    run: python train.py --train_path={path}  --test_path=data/dev/sentence_file_* --vocab_path data/vocabulary_min5k.txt --learning_rate 0.2 --use_gpu False --all_train_tokens 35479 --max_epoch 1 --log_interval 5 --dev_interval 20 --local True --batch_size 32 --shuffle false --random_seed 100 --enable_ce| python _ce.py
+    params:
+      path: data/train/sentence_file_*
     kpis:
       train_duration_card1:
         base: 1684.7283911705017
