@@ -6,6 +6,8 @@ GIT:
 ENV:
   http_proxy: "http://172.19.57.45:3128"
   https_proxy: "http://172.19.57.45:3128"
+  PADDLE_ON_MODEL_CE: 1
+  WITH_AVX: ON
 
 TRAIN:
   step1:
@@ -35,7 +37,7 @@ TRAIN:
         base: 17.065272
         threshold: 0.01
         actived: True
-    output: task/models_repo/PaddleNLP/legacy/pretrain_language_models/ELMo
+    output: task/models_repo/PaddleNLP/legacy/pretrain_language_models/ELMo/result.log
 
 
 
