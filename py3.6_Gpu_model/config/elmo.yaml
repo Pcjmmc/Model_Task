@@ -30,13 +30,15 @@ TRAIN:
       vocab_path: new_data/vocabulary_min5k.txt
     kpis:
       train_duration_card1:
-        base: 1684.7283911705017
+        kpi_base: 1684.7283911705017
         threshold: 0.005
         actived: True
+        unit_repr: "s"
       train_loss_card1:
-        base: 17.065272
+        kpi_base: 17.065272
         threshold: 0.01
         actived: True
+        unit_repr: "s"
     output: task/models_repo/PaddleNLP/legacy/pretrain_language_models/ELMo/card1.log
 
 
