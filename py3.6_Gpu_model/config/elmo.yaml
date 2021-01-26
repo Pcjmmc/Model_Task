@@ -23,7 +23,7 @@ TRAIN:
       #   path: pretrain_mode
     env:
       CUDA_VISIBLE_DEVICES: 1
-    run: python train.py --train_path={train_path}  --test_path={test_path} --vocab_path {vocab_path} --learning_rate 0.2 --use_gpu True --all_train_tokens 35479 --max_epoch 10 --log_interval 5 --dev_interval 20 --local True $@ --enable_ce --shuffle false --random_seed 100 > card1.log
+    run: python train.py --train_path={train_path}  --test_path={test_path} --vocab_path {vocab_path} --learning_rate 0.2 --use_gpu True --all_train_tokens 35479 --max_epoch 10 --log_interval 5 --dev_interval 20 --local True $@ --enable_ce --shuffle false --random_seed 100  1> card1.log
     params:
       train_path: new_data/train/sentence_file_*
       test_path: new_data/dev/sentence_file_*
