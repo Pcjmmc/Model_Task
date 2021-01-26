@@ -6,8 +6,8 @@ GIT:
 ENV:
   http_proxy: "http://172.19.57.45:3128"
   https_proxy: "http://172.19.57.45:3128"
-  PADDLE_ON_MODEL_CE: 1
-  WITH_AVX: ON
+  PADDLE_ON_MODEL_CE: "1"
+  WITH_AVX: "ON"
 
 TRAIN:
   step1:
@@ -21,9 +21,9 @@ TRAIN:
       # pre:
       #   addr: task/dataset/BERT/pretrain_model
       #   path: pretrain_mode
-    # env:
-    # key: value
-    run: python train.py --train_path={train_path}  --test_path={test_path} --vocab_path {vocab_path} --learning_rate 0.2 --use_gpu True --all_train_tokens 35479 --max_epoch 10 --log_interval 5 --dev_interval 20 --local True $@ --enable_ce --shuffle false --random_seed 100
+    env:
+      CUDA_VISIBLE_DEVICES: 1
+    run: python train.py --train_path={train_path}  --test_path={test_path} --vocab_path {vocab_path} --learning_rate 0.2 --use_gpu True --all_train_tokens 35479 --max_epoch 10 --log_interval 5 --dev_interval 20 --local True $@ --enable_ce --shuffle false --random_seed 100 > card1.log
     params:
       train_path: new_data/train/sentence_file_*
       test_path: new_data/dev/sentence_file_*
@@ -37,7 +37,7 @@ TRAIN:
         base: 17.065272
         threshold: 0.01
         actived: True
-    output: task/models_repo/PaddleNLP/legacy/pretrain_language_models/ELMo/result.log
+    output: task/models_repo/PaddleNLP/legacy/pretrain_language_models/ELMo/card1.log
 
 
 
