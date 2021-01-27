@@ -1,0 +1,59 @@
+MODEL: "human_pose"
+GIT:
+  addr: https://github.com/PaddlePaddle/models.git  
+  path: task/models_repo
+
+ENV:
+  http_proxy: "http://172.19.57.45:3128"
+  https_proxy: "http://172.19.57.45:3128"
+  PADDLE_ON_MODEL_CE: "1"
+  WITH_AVX: "ON"
+
+TRAIN:
+  step1:
+    # 进入一下路径在一下路径下执行命令
+    path: task/models_repo/PaddleCV/human_pose_estimation
+    # 关联数据
+    dataset:
+      train:
+        addr: task/dataset/human_pose/MPII
+        path: data/mpii
+      pre:
+        addr: task/dataset/human_pose/pretrained
+        path: pretrained  #在当前路径下创建data文件夹
+    env:
+      CUDA_VISIBLE_DEVICES: 1
+    run: python train.py --dataset mpii --batch_size=16 --num_epochs=2  --enable_ce true --use_gpu true 1> card1.log
+    kpis:
+      mpii_train_cost_card1:
+        kpi_base: 0.00112
+        threshold: 0.1
+        actived: True
+    output: task/models_repo/PaddleCV/human_pose_estimation/card1.log
+
+  step2:
+    # 进入一下路径在一下路径下执行命令
+    path: task/models_repo/PaddleCV/human_pose_estimation
+    # 关联数据
+    dataset:
+      dataset:
+        train:
+          addr: task/dataset/human_pose/MPII
+          path: data/mpii
+        pre:
+          addr: task/dataset/human_pose/pretrained
+          path: pretrained  #在当前路径下创建data文件夹
+    env:
+      NCCL_SHM_DISABLE: 1
+      CUDA_VISIBLE_DEVICES: 0, 1, 2, 3
+    run: python train.py --dataset mpii --num_epochs=2 --enable_ce true --use_gpu true 1> card4.log
+    kpis:
+      mpii_train_cost_card4:
+        kpi_base: 0.00126
+        threshold: 0.1
+        actived: True
+        unit_repr: "s"
+    output: task/models_repo/PaddleCV/human_pose_estimation/card4.log
+
+
+
