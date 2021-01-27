@@ -1,0 +1,69 @@
+MODEL: "XLNet"
+GIT:
+  addr: https://github.com/PaddlePaddle/models.git  
+  path: task/models_repo
+
+ENV:
+  http_proxy: "http://172.19.57.45:3128"
+  https_proxy: "http://172.19.57.45:3128"
+  PADDLE_ON_MODEL_CE: "1"
+  WITH_AVX: "ON"
+
+TRAIN:
+  step1:
+    # 进入一下路径在一下路径下执行命令
+    path: task/models_repo/PaddleNLP/legacy/pretrain_language_models/XLNet
+    # 关联数据
+    dataset:
+      train:
+        addr: task/dataset/XLNet/data
+        path: data  #在当前路径下创建data文件夹
+      pre:
+        addr: task/dataset/XLNet/xlnet_cased_L-12_H-768_A-12
+        path: xlnet_cased_L-12_H-768_A-12
+    env:
+      CUDA_VISIBLE_DEVICES: 1
+    run: python run_classifier.py --data_dir data/STS-B --verbose True --shuffle false --init_checkpoint xlnet_cased_L-12_H-768_A-12/params --predict_dir exp/sts-b --model_config_path xlnet_cased_L-12_H-768_A-12/xlnet_config.json --uncased False --save_steps 50 --train_steps 50 --epoch 1 --skip_steps 10 --validation_steps 30 --task_name sts-b --warmup_steps 5 --random_seed 100 --spiece_model_file xlnet_cased_L-12_H-768_A-12/spiece.model --checkpoints checkpoints_sts-b --is_regression True --use_cuda True --eval_batch_size 4 --enable_ce 1> card1.log
+    kpis:
+      train_duration_sts_b_card1:
+        kpi_base: 1.94770319
+        threshold: 0.01
+        actived: True
+        unit_repr: "s"
+      train_cost_sts_b_card1:
+        kpi_base: 2.735225
+        threshold: 0.02
+        actived: True
+        unit_repr: "s"
+    output: task/models_repo/PaddleNLP/legacy/pretrain_language_models/XLNet/card1.log
+
+  step2:
+    # 进入一下路径在一下路径下执行命令
+    path: task/models_repo/PaddleNLP/legacy/pretrain_language_models/XLNet
+    # 关联数据
+     dataset:
+      train:
+        addr: task/dataset/XLNet/data
+        path: data  #在当前路径下创建data文件夹
+      pre:
+        addr: task/dataset/XLNet/xlnet_cased_L-12_H-768_A-12
+        path: xlnet_cased_L-12_H-768_A-12
+    env:
+      NCCL_SHM_DISABLE: 1
+      CUDA_VISIBLE_DEVICES: 0, 1, 2, 3
+    run: python run_classifier.py --data_dir data/STS-B --verbose True --shuffle false --init_checkpoint xlnet_cased_L-12_H-768_A-12/params --predict_dir exp/sts-b --model_config_path xlnet_cased_L-12_H-768_A-12/xlnet_config.json --uncased False --save_steps 50 --train_steps 50 --epoch 1 --skip_steps 10 --validation_steps 30 --task_name sts-b --warmup_steps 5 --random_seed 100 --spiece_model_file xlnet_cased_L-12_H-768_A-12/spiece.model --checkpoints checkpoints_sts-b --is_regression True --use_cuda True --eval_batch_size 4 --enable_ce 1> card4.log
+    kpis:
+      train_duration_sts_b_card4:
+        kpi_base: 2.227002387047
+        threshold: 0.04
+        actived: True
+        unit_repr: "s"
+      train_cost_sts_b_card4:
+        kpi_base: 1.640692
+        threshold: 0.08
+        actived: True
+        unit_repr: "s"
+    output: task/models_repo/PaddleNLP/legacy/pretrain_language_models/XLNet/card4.log
+
+
+
