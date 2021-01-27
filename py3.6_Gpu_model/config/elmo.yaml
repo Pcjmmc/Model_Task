@@ -30,16 +30,47 @@ TRAIN:
       vocab_path: new_data/vocabulary_min5k.txt
     kpis:
       train_duration_card1:
-        kpi_base: 1684.7283911705017
-        threshold: 0.005
-        actived: True
-        unit_repr: "s"
-      train_loss_card1:
-        kpi_base: 17.065272
+        kpi_base: 9.3632504463
         threshold: 0.01
         actived: True
         unit_repr: "s"
+      train_loss_card1:
+        kpi_base: 9.58
+        threshold: 0.005
+        actived: True
+        unit_repr: "s"
     output: task/models_repo/PaddleNLP/legacy/pretrain_language_models/ELMo/card1.log
+
+  step2:
+    # 进入一下路径在一下路径下执行命令
+    path: task/models_repo/PaddleNLP/legacy/pretrain_language_models/ELMo
+    # 关联数据
+    dataset:
+      train:
+        addr: task/dataset/ELMo/data
+        path: new_data  #在当前路径下创建data文件夹
+      # pre:
+      #   addr: task/dataset/BERT/pretrain_model
+      #   path: pretrain_mode
+    env:
+      CUDA_VISIBLE_DEVICES: 0,1,2,3
+    run: python train.py --train_path={train_path}  --test_path={test_path} --vocab_path {vocab_path} --learning_rate 0.2 --use_gpu True --all_train_tokens 35479 --max_epoch 10 --log_interval 5 --dev_interval 20 --local True $@ --enable_ce --shuffle false --random_seed 100  1> card4.log
+    params:
+      train_path: new_data/train/sentence_file_*
+      test_path: new_data/dev/sentence_file_*
+      vocab_path: new_data/vocabulary_min5k.txt
+    kpis:
+      train_duration_card4:
+        kpi_base: 70.77291488647
+        threshold: 0.01
+        actived: True
+        unit_repr: "s"
+      train_loss_card4:
+        kpi_base: 10.932211
+        threshold: 0.01
+        actived: True
+        unit_repr: "s"
+    output: task/models_repo/PaddleNLP/legacy/pretrain_language_models/ELMo/card4.log
 
 
 
