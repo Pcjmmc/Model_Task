@@ -29,11 +29,13 @@ TRAIN:
         kpi_base: 1.94770319
         threshold: 0.01
         actived: True
+        evaluation: "-"
         unit_repr: "s"
       train_cost_sts_b_card1:
         kpi_base: 2.735225
         threshold: 0.02
         actived: True
+        evaluation: "-"
         unit_repr: "s"
     output: task/models_repo/PaddleNLP/legacy/pretrain_language_models/XLNet/card1.log
 
@@ -57,10 +59,12 @@ TRAIN:
         kpi_base: 2.227002387047
         threshold: 0.04
         actived: True
+        evaluation: "-"
         unit_repr: "s"
       train_cost_sts_b_card4:
         kpi_base: 1.640692
         threshold: 0.08
+        evaluation: "-"
         actived: True
         unit_repr: "s"
     output: task/models_repo/PaddleNLP/legacy/pretrain_language_models/XLNet/card4.log

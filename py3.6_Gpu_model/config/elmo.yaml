@@ -33,11 +33,13 @@ TRAIN:
         kpi_base: 9.3632504463
         threshold: 0.01
         actived: True
+        evaluation: "-"
         unit_repr: "s"
       train_loss_card1:
         kpi_base: 9.58
         threshold: 0.005
         actived: True
+        evaluation: "-"
         unit_repr: "s"
     output: task/models_repo/PaddleNLP/legacy/pretrain_language_models/ELMo/card1.log
 
@@ -65,11 +67,13 @@ TRAIN:
         kpi_base: 70.77291488647
         threshold: 0.01
         actived: True
+        evaluation: "-"
         unit_repr: "s"
       train_loss_card4:
         kpi_base: 10.932211
         threshold: 0.01
         actived: True
+        evaluation: "-"
         unit_repr: "s"
     output: task/models_repo/PaddleNLP/legacy/pretrain_language_models/ELMo/card4.log
 
