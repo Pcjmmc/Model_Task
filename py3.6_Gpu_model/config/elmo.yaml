@@ -17,7 +17,7 @@ TRAIN:
     dataset:
       train:
         addr: task/dataset/ELMo/data
-        path: new_data  #在当前路径下创建data文件夹
+        path: task/models_repo/PaddleNLP/legacy/pretrain_language_models/ELMo/new_data  #在当前路径下创建data文件夹
       # pre:
       #   addr: task/dataset/BERT/pretrain_model
       #   path: pretrain_mode
@@ -50,7 +50,7 @@ TRAIN:
     dataset:
       train:
         addr: task/dataset/ELMo/data
-        path: new_data  #在当前路径下创建data文件夹
+        path: task/models_repo/PaddleNLP/legacy/pretrain_language_models/ELMo/new_data  #在当前路径下创建data文件夹
       # pre:
       #   addr: task/dataset/BERT/pretrain_model
       #   path: pretrain_mode
