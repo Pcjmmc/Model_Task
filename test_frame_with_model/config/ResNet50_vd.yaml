@@ -2,6 +2,10 @@ MODEL: "ResNet50_vd"
 
 PRIORITY: p0
 
+VARIABLES:
+  single_log_name: "ResNet50_vd_single_card.log"
+  multi_log_name: "ResNet50_vd_multi_card.log"
+
 EXEC:
   exec_cases: [DATA_PROC,TRAIN]
   exec_priority: [p0]
@@ -37,7 +41,7 @@ TRAIN:
               -o pretrained_model="" \
               -o epochs=2 \
               -o TRAIN.batch_size=2 \
-              -o use_gpu=True 1> ResNet50_vd_card1.log
+              -o use_gpu=True 1> $single_log_name
     kpis:
       loss:
         latest: False
@@ -51,7 +55,7 @@ TRAIN:
         threshold: 0.005
         evaluation: "-"
         unit_repr: "s"
-    output: $ROOT_PATH/clas_repo/ResNet50_vd_card1.log
+    output: $ROOT_PATH/clas_repo/$single_log_name
 
   -
     priority: p0
@@ -67,7 +71,7 @@ TRAIN:
               -o pretrained_model="" \
               -o epochs=2 \
               -o TRAIN.batch_size=2 \
-              -o use_gpu=True 1> ResNet50_vd_card4.log
+              -o use_gpu=True 1> $multi_log_name
     kpis:
       loss:
         latest: True
@@ -83,4 +87,4 @@ TRAIN:
         threshold: 0.01
         evaluation: "-"
         unit_repr: "s"
-    output: $ROOT_PATH/clas_repo/ResNet50_vd_card4.log
+    output: $ROOT_PATH/clas_repo/$multi_log_name
