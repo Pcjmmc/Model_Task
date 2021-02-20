@@ -41,7 +41,7 @@ TRAIN:
               -o pretrained_model="" \
               -o epochs=2 \
               -o TRAIN.batch_size=2 \
-              -o use_gpu=True 1> $single_log_name
+              -o use_gpu=True > $single_log_name 2>&1
     kpis:
       loss:
         latest: False
@@ -71,7 +71,7 @@ TRAIN:
               -o pretrained_model="" \
               -o epochs=2 \
               -o TRAIN.batch_size=2 \
-              -o use_gpu=True 1> $multi_log_name
+              -o use_gpu=True > $multi_log_name 2>&1
     kpis:
       loss:
         latest: True
