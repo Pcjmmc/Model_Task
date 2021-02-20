@@ -32,7 +32,7 @@ TRAIN:
       -
         # 进入一下路径在一下路径下执行命令
         path: $ROOT_PATH/clas_repo/
-        cmd:  python tools/train.py -c configs/ResNet/ResNet50.yaml -o pretrained_model="" -o epochs=2 -o TRAIN.batch_size = 2 -o use_gpu=True 1> $MODEL/card1.log
+        cmd:  python tools/train.py -c configs/ResNet/ResNet50.yaml -o pretrained_model="" -o epochs=2 -o TRAIN.batch_size=2 -o use_gpu=True 1> ResNet50_card1.log
     kpis:
       loss:
         latest: False
@@ -46,7 +46,7 @@ TRAIN:
         threshold: 0.005
         evaluation: "-"
         unit_repr: "s"
-    output: $ROOT_PATH/clas_repo/$MODEL/card1.log
+    output: $ROOT_PATH/clas_repo/ResNet50_card1.log
 
   -
     priority: p0
@@ -57,7 +57,7 @@ TRAIN:
       -
         # 进入一下路径在一下路径下执行命令
         path: $ROOT_PATH/clas_repo/
-        cmd: python tools/train.py -c configs/ResNet/ResNet50.yaml -o pretrained_model="" -o epochs=2 -o TRAIN.batch_size = 2  -o use_gpu=True 1> $MODEL/card4.log
+        cmd: python tools/train.py -c configs/ResNet/ResNet50.yaml -o pretrained_model="" -o epochs=2 -o TRAIN.batch_size=2  -o use_gpu=True 1> ResNet50_card4.log
     kpis:
       loss:
         latest: True
@@ -73,4 +73,4 @@ TRAIN:
         threshold: 0.01
         evaluation: "-"
         unit_repr: "s"
-    output: $ROOT_PATH/clas_repo/$MODEL/card4.log
+    output: $ROOT_PATH/clas_repo/ResNet50_card4.log
