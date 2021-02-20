@@ -35,6 +35,8 @@ TRAIN:
         cmd:  python tools/train.py \
               -c configs/ResNet/ResNet50_vd.yaml \
               -o pretrained_model="" \
+              -o epochs=2 \
+              -o TRAIN.batch_size = 2 \
               -o use_gpu=True 1> $MODEL_card1.log
       loss:
         latest: False
@@ -62,6 +64,8 @@ TRAIN:
         cmd: python tools/train.py \
               -c configs/ResNet/ResNet50_vd.yaml \
               -o pretrained_model="" \
+              -o epochs=2 \
+              -o TRAIN.batch_size = 2 \
               -o use_gpu=True 1> $MODEL_card4.log
     kpis:
       loss:
