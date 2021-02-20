@@ -38,6 +38,7 @@ TRAIN:
               -o epochs=2 \
               -o TRAIN.batch_size = 2 \
               -o use_gpu=True 1> $MODEL_card1.log
+    kpis:
       loss:
         latest: False
         kpi_base: 9.3632504463

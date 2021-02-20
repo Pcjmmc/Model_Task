@@ -32,12 +32,8 @@ TRAIN:
       -
         # 进入一下路径在一下路径下执行命令
         path: $ROOT_PATH/clas_repo/
-        cmd:  python tools/train.py \
-              -c configs/ResNet/ResNet50.yaml \
-              -o pretrained_model="" \
-              -o epochs=2 \
-              -o TRAIN.batch_size = 2 \
-              -o use_gpu=True 1> $MODEL_card1.log
+        cmd:  python tools/train.py -c configs/ResNet/ResNet50.yaml -o pretrained_model="" -o epochs=2 -o TRAIN.batch_size = 2 -o use_gpu=True 1> $MODEL_card1.log
+    kpis:
       loss:
         latest: False
         kpi_base: 9.3632504463
@@ -61,12 +57,7 @@ TRAIN:
       -
         # 进入一下路径在一下路径下执行命令
         path: $ROOT_PATH/clas_repo/
-        cmd: python tools/train.py \
-              -c configs/ResNet/ResNet50.yaml \
-              -o pretrained_model="" \
-              -o epochs=2 \
-              -o TRAIN.batch_size = 2 \
-              -o use_gpu=True 1> $MODEL_card4.log
+        cmd: python tools/train.py -c configs/ResNet/ResNet50.yaml -o pretrained_model="" -o epochs=2 -o TRAIN.batch_size = 2  -o use_gpu=True 1> $MODEL_card4.log
     kpis:
       loss:
         latest: True
