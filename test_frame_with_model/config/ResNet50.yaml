@@ -20,8 +20,8 @@ DATA_PROC:
     priority: p0
     run:
       -
-        path: $ROOT_PATH/dataset/ILSVRC2012/ #脚本的路径
-        cmd: ln -s train_list.txt  $ROOT_PATH/clas_repo/dataset/ILSVRC2012/train_list.txt
+        path: $ROOT_PATH/dataset #脚本的路径
+        cmd: ln -s $ROOT_PATH/dataset/ILSVRC2012 $ROOT_PATH/clas_repo/dataset/
 
 TRAIN:
   -
