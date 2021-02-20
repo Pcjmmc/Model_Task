@@ -1,0 +1,81 @@
+MODEL: "ResNet50_vd"
+
+PRIORITY: p0
+
+EXEC:
+  exec_cases: [DATA_PROC,TRAIN]
+  exec_priority: [p0]
+
+GIT:
+  addr: $ClAS_ADDR
+  path: $ROOT_PATH/clas_repo
+
+ENV:
+  http_proxy: $HTTP_PROXY
+  https_proxy: $HTTPS_PROXY
+
+#测试套 
+DATA_PROC:
+  -
+    priority: p0
+    run:
+      -
+        path: $ROOT_PATH/dataset/ILSVRC2012/ #脚本的路径
+        cmd: ln -s train_list.txt  $ROOT_PATH/clas_repo/dataset/ILSVRC2012/train_list.txt
+
+TRAIN:
+  -
+    priority: p0
+    env:
+      CUDA_VISIBLE_DEVICES: 1
+    run:
+      -
+        # 进入一下路径在一下路径下执行命令
+        path: $ROOT_PATH/clas_repo/
+        cmd:  python tools/train.py \
+              -c configs/ResNet/ResNet50_vd.yaml \
+              -o pretrained_model="" \
+              -o use_gpu=True 1> $MODEL_card1.log
+      loss:
+        latest: False
+        kpi_base: 9.3632504463
+        threshold: 0.01
+        evaluation: "-"
+        unit_repr: "s"
+      lr:
+        latest: False
+        kpi_base: 9.58
+        threshold: 0.005
+        evaluation: "-"
+        unit_repr: "s"
+    output: $ROOT_PATH/clas_repo/$MODEL_card1.log
+
+  -
+    priority: p0
+    env:
+      NCCL_SHM_DISABLE: 1
+      CUDA_VISIBLE_DEVICES: 0, 1, 2, 3
+    run: 
+      -
+        # 进入一下路径在一下路径下执行命令
+        path: $ROOT_PATH/clas_repo/
+        cmd: python tools/train.py \
+              -c configs/ResNet/ResNet50_vd.yaml \
+              -o pretrained_model="" \
+              -o use_gpu=True 1> $MODEL_card4.log
+    kpis:
+      loss:
+        latest: True
+        actived: True
+        kpi_base: 70.77291488647
+        threshold: 0.01
+        evaluation: "-"
+        unit_repr: "s"
+      lr:
+        latest: True
+        actived: True
+        kpi_base: 10.932211
+        threshold: 0.01
+        evaluation: "-"
+        unit_repr: "s"
+    output: $ROOT_PATH/clas_repo/$MODEL_card4.log
