@@ -14,10 +14,6 @@ GIT:
   addr: $ClAS_ADDR
   path: $ROOT_PATH/clas_repo
 
-ENV:
-  http_proxy: $HTTP_PROXY
-  https_proxy: $HTTPS_PROXY
-
 #测试套 
 DATA_PROC:
   -
