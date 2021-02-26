@@ -1,0 +1,40 @@
+MODEL: "deeplabv3"
+
+PRIORITY: p0
+
+VARIABLES:
+  cpu_log_name: "deeplabv3_cpu.log"
+
+EXEC:
+  exec_cases: [DATA_PROC,TRAIN]
+  exec_priority: [p0]
+
+GIT:
+  addr: $SEG_ADDR
+  path: $ROOT_PATH/seg_repo
+
+#测试套 
+DATA_PROC:
+  -
+    priority: p0
+    run:
+      -
+        path: $ROOT_PATH/scripts/deeplabv3 #脚本的路径
+        cmd: prepare.bat
+
+TRAIN:
+  -
+    priority: p0
+    run:
+      -
+        # 进入一下路径在一下路径下执行命令
+        path: $ROOT_PATH/seg_repo/
+        cmd: python train.py --config configs/deeplabv3/deeplabv3_resnet101_os8_cityscapes_1024x512_80k.yml --iters 100 > $cpu_log_name 2>&1
+    kpis:
+      loss:
+        latest: True
+        kpi_base: 9.3632504463
+        threshold: 0.01
+        evaluation: "-"
+        unit_repr: "s"
+    output: $ROOT_PATH/seg_repo/$cpu_log_name

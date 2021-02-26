@@ -1,0 +1,51 @@
+MODEL: "ResNet50_vd"
+
+PRIORITY: p0
+
+VARIABLES:
+  cpu_log_name: "ResNet50_vd_cpu.log"
+EXEC:
+  exec_cases: [DATA_PROC,TRAIN]
+  exec_priority: [p0]
+
+GIT:
+  addr: $ClAS_ADDR
+  path: $ROOT_PATH/clas_repo
+
+#测试套 
+DATA_PROC:
+  -
+    priority: p0
+    run:
+      -
+        path: $ROOT_PATH/scripts/ResNet #脚本的路径
+        cmd: prepare.bat
+
+TRAIN:
+  -
+    priority: p0
+    run:
+      -
+        # 进入一下路径在一下路径下执行命令
+        path: $ROOT_PATH/clas_repo/
+        cmd:  python tools/train.py -c configs/ResNet/ResNet50_vd.yaml -o pretrained_model="" -o epochs=5 -o TRAIN.batch_size=16 -o use_gpu=False -o validate=False > $cpu_log_name 2>&1
+    kpis:
+      loss:
+        latest: True
+        kpi_base: 9.3632504463
+        threshold: 0.01
+        evaluation: "-"
+        unit_repr: "s"
+      top1:
+        latest: True
+        kpi_base: 9.58
+        threshold: 0.005
+        evaluation: "-"
+        unit_repr: "s"
+      top5:
+        latest: True
+        kpi_base: 9.58
+        threshold: 0.005
+        evaluation: "-"
+        unit_repr: "s"
+    output: $ROOT_PATH/clas_repo/$cpu_log_name
