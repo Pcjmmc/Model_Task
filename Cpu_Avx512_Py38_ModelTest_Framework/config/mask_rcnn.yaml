@@ -20,7 +20,7 @@ DATA_PROC:
     run:
       -
         path: $ROOT_PATH/scripts/mask_rcnn #脚本的路径
-        cmd: sh prepare.sh
+        cmd: bash prepare.sh
 
 TRAIN:
   -
