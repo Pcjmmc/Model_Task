@@ -30,7 +30,7 @@ TRAIN:
       -
         # 进入一下路径在一下路径下执行命令
         path: $ROOT_PATH/detection_repo/
-        cmd: python tools/train.py -c configs/mask_rcnn_r50_1x.yml -o use_gpu=false -o max_iters=100 > $cpu_log_name 2>&1
+        cmd: python tools/train.py -c configs/mask_rcnn_r50_1x.yml -o use_gpu=False -o max_iters=100 > $cpu_log_name 2>&1
     kpis:
       loss:
         latest: True
