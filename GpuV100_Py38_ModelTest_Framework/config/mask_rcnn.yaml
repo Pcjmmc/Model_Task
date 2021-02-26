@@ -35,15 +35,9 @@ TRAIN:
         cmd: python tools/train.py -c configs/mask_rcnn_r50_1x.yml -o use_gpu=true -o max_iters=100 > $multi_log_name 2>&1
     kpis:
       loss:
-        latest: False
+        latest: True
         kpi_base: 9.3632504463
         threshold: 0.01
-        evaluation: "-"
-        unit_repr: "s"
-      lr:
-        latest: False
-        kpi_base: 9.58
-        threshold: 0.005
         evaluation: "-"
         unit_repr: "s"
     output: $ROOT_PATH/detection_repo/$single_log_name
@@ -63,13 +57,6 @@ TRAIN:
         latest: True
         actived: True
         kpi_base: 70.77291488647
-        threshold: 0.01
-        evaluation: "-"
-        unit_repr: "s"
-      lr:
-        latest: True
-        actived: True
-        kpi_base: 10.932211
         threshold: 0.01
         evaluation: "-"
         unit_repr: "s"

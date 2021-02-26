@@ -29,16 +29,22 @@ TRAIN:
       -
         # 进入一下路径在一下路径下执行命令
         path: $ROOT_PATH/clas_repo/
-        cmd:  python tools/train.py -c configs/ResNet/ResNet50.yaml -o pretrained_model="" -o epochs=2 -o TRAIN.batch_size=2 -o use_gpu=False > $cpu_log_name 2>&1
+        cmd:  python tools/train.py -c configs/ResNet/ResNet50.yaml -o pretrained_model="" -o epochs=5 -o TRAIN.batch_size=16 -o use_gpu=False -o validate=False > $cpu_log_name 2>&1
     kpis:
       loss:
-        latest: False
+        latest: True
         kpi_base: 9.3632504463
         threshold: 0.01
         evaluation: "-"
         unit_repr: "s"
-      lr:
-        latest: False
+      top1:
+        latest: True
+        kpi_base: 9.58
+        threshold: 0.005
+        evaluation: "-"
+        unit_repr: "s"
+      top5:
+        latest: True
         kpi_base: 9.58
         threshold: 0.005
         evaluation: "-"
