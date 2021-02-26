@@ -33,6 +33,9 @@ TRAIN:
         # 进入一下路径在一下路径下执行命令
         path: $ROOT_PATH/detection_repo/
         cmd: python tools/train.py -c configs/mask_rcnn_r50_1x.yml -o use_gpu=true -o max_iters=100 > $multi_log_name 2>&1
+      -
+        path: $PROJECT_ROOT/utils
+        cmd: python process_log.py --log_path=$ROOT_PATH/detection_repo/$single_log_name --reg="'" --obj=""
     kpis:
       loss:
         latest: True
@@ -52,6 +55,10 @@ TRAIN:
         # 进入一下路径在一下路径下执行命令
         path: $ROOT_PATH/detection_repo/
         cmd: python tools/train.py -c configs/mask_rcnn_r50_1x.yml -o use_gpu=true -o max_iters=100 > $single_log_name 2>&1
+      -
+        path: $PROJECT_ROOT/utils
+        cmd: python process_log.py --log_path=$ROOT_PATH/detection_repo/$multi_log_name --reg="'" --obj=""
+
     kpis:
       loss:
         latest: True
