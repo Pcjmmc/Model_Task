@@ -36,16 +36,4 @@ TRAIN:
         threshold: 0.01
         evaluation: "-"
         unit_repr: "s"
-      top1:
-        latest: True
-        kpi_base: 9.58
-        threshold: 0.005
-        evaluation: "-"
-        unit_repr: "s"
-      top5:
-        latest: True
-        kpi_base: 9.58
-        threshold: 0.005
-        evaluation: "-"
-        unit_repr: "s"
     output: $ROOT_PATH/clas_repo/$cpu_log_name
