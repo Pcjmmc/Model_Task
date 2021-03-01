@@ -1,0 +1,9 @@
+wget==3.2
+ujson
+opencv-python
+pillow
+tqdm
+PyYAML
+visualdl >= 2.0.0b
+scipy==1.5.4
+pycocotools==2.0.2
