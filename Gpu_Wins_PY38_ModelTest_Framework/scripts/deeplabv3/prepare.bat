@@ -1,4 +1,6 @@
 @echo off
-set seg_dir=./../../seg_repo
-md  %seg_dir%/data/
-mklink /j /workspace/task/dataset/cityscape/ %seg_dir%/data/cityscapes
+cd ../..
+cd seg_repo
+rd /s /q data
+md data
+mklink /j data\cityscapes  D:\liuhuanling\dataset\cityscape
