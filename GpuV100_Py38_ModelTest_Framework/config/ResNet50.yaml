@@ -37,20 +37,8 @@ TRAIN:
       loss:
         latest: True
         kpi_base: 5.931198
-        threshold: 0.04
+        threshold: 0.05
         evaluation: "-"
-        unit_repr: None
-      top1:
-        latest: True
-        kpi_base: 0.01451
-        threshold: 0.15
-        evaluation: "+"
-        unit_repr: None
-      top5:
-        latest: True
-        kpi_base: 0.062683
-        threshold: 0.2
-        evaluation: "+"
         unit_repr: None
     output: $ROOT_PATH/clas_repo/$single_log_name
 
@@ -70,17 +58,5 @@ TRAIN:
         kpi_base: 6.018298
         threshold: 0.05
         evaluation: "-"
-        unit_repr: None
-      top1:
-        latest: True
-        kpi_base: 0.015812
-        threshold: 0.2
-        evaluation: "+"
-        unit_repr: None
-      top5:
-        latest: True
-        kpi_base: 0.056733
-        threshold: 0.2
-        evaluation: "+"
         unit_repr: None
     output: $ROOT_PATH/clas_repo/$multi_log_name

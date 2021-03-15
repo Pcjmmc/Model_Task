@@ -36,8 +36,8 @@ TRAIN:
     kpis:
       loss:
         latest: True
-        kpi_base: 9.3632504463
-        threshold: 0.01
+        kpi_base: 6.149695
+        threshold: 0.05
         evaluation: "-"
         unit_repr: "s"
     output: $ROOT_PATH/clas_repo/$single_log_name
@@ -55,8 +55,8 @@ TRAIN:
     kpis:
       loss:
         latest: True
-        kpi_base: 9.3632504463
-        threshold: 0.01
+        kpi_base: 6.172326
+        threshold: 0.02
         evaluation: "-"
         unit_repr: "s"
     output: $ROOT_PATH/clas_repo/$multi_log_name
