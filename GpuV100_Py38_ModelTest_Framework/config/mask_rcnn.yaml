@@ -39,8 +39,8 @@ TRAIN:
     kpis:
       loss:
         latest: True
-        kpi_base: 1.917170
-        threshold: 0.12
+        kpi_base: 1.679741
+        threshold: 0.07
         evaluation: "-"
         unit_repr: "s"
     output: $ROOT_PATH/detection_repo/$single_log_name
@@ -63,8 +63,8 @@ TRAIN:
       loss:
         latest: True
         actived: True
-        kpi_base: 1.689397
-        threshold: 0.04
+        kpi_base: 1.649808
+        threshold: 0.05
         evaluation: "-"
         unit_repr: "s"
     output: $ROOT_PATH/detection_repo/$multi_log_name
