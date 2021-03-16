@@ -34,8 +34,8 @@ TRAIN:
     kpis:
       loss:
         latest: True
-        kpi_base: 9.3632504463
-        threshold: 0.01
+        kpi_base: 6.549502
+        threshold: 0.005
         evaluation: "-"
         unit_repr: "s"
     output: $ROOT_PATH/clas_repo/$gpu_log_name
