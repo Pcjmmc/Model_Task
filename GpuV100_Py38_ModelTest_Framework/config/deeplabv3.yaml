@@ -2,6 +2,10 @@ MODEL: "DeepLabv3"
 
 PRIORITY: p0
 
+ENV:
+  http_proxy: http://172.19.57.45:3128
+  https_proxy: http://172.19.57.45:3128
+
 VARIABLES:
   single_log_name: "deeplabv3_single_card.log"
   multi_log_name: "deeplabv3_multi_card.log"

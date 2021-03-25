@@ -2,6 +2,11 @@ MODEL: "ResNet50_vd"
 
 PRIORITY: p0
 
+ENV:
+  http_proxy: http://172.19.57.45:3128
+  https_proxy: http://172.19.57.45:3128
+
+
 VARIABLES:
   single_log_name: "ResNet50_vd_single_card.log"
   multi_log_name: "ResNet50_vd_multi_card.log"
