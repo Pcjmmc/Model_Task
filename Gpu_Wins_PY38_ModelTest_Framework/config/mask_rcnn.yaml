@@ -8,6 +8,7 @@ VARIABLES:
 EXEC:
   exec_cases: [DATA_PROC,TRAIN]
   exec_priority: [p0]
+  exec_tag: [sing_card]
 
 GIT:
   addr: $DETECTION_ADDR
@@ -25,6 +26,7 @@ DATA_PROC:
 TRAIN:
   -
     priority: p0
+    tag: sing_card
     env:
       CUDA_VISIBLE_DEVICES: 0
     run:
