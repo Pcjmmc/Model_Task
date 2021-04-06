@@ -9,3 +9,7 @@ NLP_ADDR = "https://github.com/PaddlePaddle/PaddleNLP.git"
 SEG_ADDR  = "https://github.com/PaddlePaddle/PaddleSeg.git"
 ClAS_ADDR = "https://github.com/PaddlePaddle/PaddleClas.git"
 DETECTION_ADDR = "https://github.com/PaddlePaddle/PaddleDetection.git"
+
+
+
+PADDLE_ON_MODEL_CE = "1"

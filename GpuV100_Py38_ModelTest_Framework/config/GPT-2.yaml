@@ -1,0 +1,66 @@
+MODEL: "GPT-2" # 模型名
+PRIORITY: p0
+GIT:
+  addr: $NLP_ADDR
+  path: $ROOT_PATH/nlp_repo
+
+ENV:
+  http_proxy: $HTTP_PROXY
+  https_proxy: $HTTPS_PROXY
+  PADDLE_ON_MODEL_CE: $PADDLE_ON_MODEL_CE
+
+VARIABLES:
+  model_scripts_path: scripts/GPT-2/ #脚本的路径
+  model_log_path: log/GPT-2/
+
+EXEC:
+  exec_cases: [DATA_PROC,TRAIN]
+  exec_priority: [p0]
+  exec_tag: [single_card, multi_card4]
+
+#测试套
+DATA_PROC:
+  -
+    priority: p0
+    run:
+      -
+        path: $ROOT_PATH/$model_scripts_path
+        cmd: bash data_proc.sh
+
+TRAIN: # 训练步骤
+  -
+    priority: p0
+    tag: "single_card"
+    env: #去掉，自动调度
+      CUDA_VISIBLE_DEVICES: 0
+    run:
+      -
+        path: $ROOT_PATH/$model_scripts_path
+        cmd: bash train.sh 'single' 'gpu' 
+    kpis: #kpi指标
+      loss:
+        latest: True
+        kpi_base: 10.984482
+        threshold: 0.01
+        actived: True
+        evaluation: "-"
+        unit_repr: "s"
+    output: $ROOT_PATH/$model_log_path/single_card_train.log
+  # -
+  #   priority: p1
+  #   tag: "multi_card2"
+  #   env: #去掉，自动调度
+  #     CUDA_VISIBLE_DEVICES: 1,2
+  #   run:
+  #     -
+  #       path: $ROOT_PATH/$model_scripts_path
+  #       cmd: bash train.sh 'multi' 'gpu' '1,2'
+  #   kpis: #kpi指标
+  #     loss:
+  #       latest: True
+  #       kpi_base: 10.984482
+  #       threshold: 0.01
+  #       actived: True
+  #       evaluation: "-"
+  #       unit_repr: "s"
+  #   output:  $ROOT_PATH/$model_log_path/multi_cards_train.log
