@@ -39,7 +39,7 @@ TRAIN:
       loss:
         latest: True
         kpi_base: 1.583920
-        threshold: 0.1
+        threshold: 0.2
         evaluation: "-"
         unit_repr: "s"
     output: $ROOT_PATH/seg_repo/$cpu_log_name
