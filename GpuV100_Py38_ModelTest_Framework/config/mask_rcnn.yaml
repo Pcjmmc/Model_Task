@@ -71,7 +71,7 @@ TRAIN:
         latest: True
         actived: True
         kpi_base: 1.649808
-        threshold: 0.05
+        threshold: 0.06
         evaluation: "-"
         unit_repr: "s"
     output: $ROOT_PATH/detection_repo/$multi_log_name

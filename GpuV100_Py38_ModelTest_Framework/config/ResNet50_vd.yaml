@@ -64,7 +64,7 @@ TRAIN:
       loss:
         latest: True
         kpi_base: 6.172326
-        threshold: 0.02
+        threshold: 0.05
         evaluation: "-"
         unit_repr: "s"
     output: $ROOT_PATH/clas_repo/$multi_log_name
