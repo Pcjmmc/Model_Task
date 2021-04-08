@@ -32,7 +32,7 @@ TRAIN: # 训练步骤
     priority: p0
     tag: "single_card"
     env: #去掉，自动调度
-      CUDA_VISIBLE_DEVICES: 0
+      CUDA_VISIBLE_DEVICES: 1
     run:
       -
         path: $ROOT_PATH/$model_scripts_path
