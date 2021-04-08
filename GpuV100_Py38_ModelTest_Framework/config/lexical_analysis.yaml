@@ -57,4 +57,4 @@ TRAIN: # 训练步骤
         actived: True
         evaluation: "-"
         unit_repr: "s"
-    output: $ROOT_PATH/$model_log_path/single_card_train.log
+    output: $ROOT_PATH/$model_log_path/gpu_single_train.log
