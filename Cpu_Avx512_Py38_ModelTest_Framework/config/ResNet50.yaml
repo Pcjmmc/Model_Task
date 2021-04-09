@@ -35,8 +35,9 @@ TRAIN:
     kpis:
       loss:
         latest: True
+        actived: True
         kpi_base: 6.642184
         threshold: 0.02
         evaluation: "-"
-        unit_repr: "s"
+        unit_repr: None
     output: $ROOT_PATH/clas_repo/$cpu_log_name

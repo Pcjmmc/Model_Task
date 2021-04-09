@@ -45,9 +45,11 @@ TRAIN:
     kpis:
       loss:
         latest: True
+        actived: True
         kpi_base: 1.646840
         threshold: 0.2
         evaluation: "-"
+        unit_repr: None
     output: $ROOT_PATH/seg_repo/$single_log_name
 
   -
@@ -71,5 +73,5 @@ TRAIN:
         kpi_base: 1.65584
         threshold: 0.2
         evaluation: "-"
-        unit_repr: "s"
+        unit_repr: None
     output: $ROOT_PATH/seg_repo/$multi_log_name

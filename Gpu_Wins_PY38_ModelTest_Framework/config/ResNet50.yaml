@@ -37,8 +37,9 @@ TRAIN:
     kpis:
       loss:
         latest: True
+        actived: True
         kpi_base: 6.433232
         threshold: 0.01
         evaluation: "-"
-        unit_repr: "s"
+        unit_repr: None
     output: $ROOT_PATH/clas_repo/$gpu_log_name
