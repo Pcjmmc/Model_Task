@@ -37,7 +37,7 @@ TRAIN:
     run:
       -
         # 进入一下路径在一下路径下执行命令
-        path: $ROOT_PATH/detection_repo/
+        path: $ROOT_PATH/detection_repo/static/
         cmd: python tools/train.py -c configs/mask_rcnn_r50_1x.yml --enable_ce True -o use_gpu=true max_iters=100 TrainReader.shuffle=false > $single_log_name 2>&1
       -
         path: $PROJECT_ROOT/utils
@@ -61,7 +61,7 @@ TRAIN:
     run: 
       -
         # 进入一下路径在一下路径下执行命令
-        path: $ROOT_PATH/detection_repo/
+        path: $ROOT_PATH/detection_repo/static/
         cmd: python tools/train.py -c configs/mask_rcnn_r50_1x.yml --enable_ce True -o use_gpu=true max_iters=100 TrainReader.shuffle=false > $multi_log_name 2>&1
       -
         path: $PROJECT_ROOT/utils
