@@ -9,3 +9,10 @@ NLP_ADDR = "https://github.com/PaddlePaddle/PaddleNLP.git"
 SEG_ADDR  = "https://github.com/PaddlePaddle/PaddleSeg.git"
 ClAS_ADDR = "https://github.com/PaddlePaddle/PaddleClas.git"
 DETECTION_ADDR = "https://github.com/PaddlePaddle/PaddleDetection.git"
+
+EXEC_TAG = [
+    "linux_dy_cpu",
+    "linux_st_cpu",
+    # 补充一些自定义标签
+    "linux_download_data"
+]

@@ -7,7 +7,7 @@ VARIABLES:
 EXEC:
   exec_cases: [DATA_PROC,TRAIN]
   exec_priority: [p0]
-  exec_tag: [linux_cpu]
+  exec_tag: $EXEC_TAG
 
 GIT:
   addr: $ClAS_ADDR
@@ -17,6 +17,7 @@ GIT:
 DATA_PROC:
   -
     priority: p0
+    tag: linux_download_data
     run:
       -
         path: $ROOT_PATH/dataset #脚本的路径
@@ -25,7 +26,7 @@ DATA_PROC:
 TRAIN:
   -
     priority: p0
-    tag: linux_cpu
+    tag: linux_dy_cpu
     run:
       -
         # 进入一下路径在一下路径下执行命令
