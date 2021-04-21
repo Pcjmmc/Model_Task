@@ -13,3 +13,10 @@ DETECTION_ADDR = "https://github.com/PaddlePaddle/PaddleDetection.git"
 
 
 PADDLE_ON_MODEL_CE = "1"
+
+EXEC_TAG = [
+    "linux_st_gpu1", "linux_st_gpu4",
+    "linux_dy_gpu1", "linux_dy_gpu4",
+    # 补充一些自定义标签
+    "linux_download_data"
+]

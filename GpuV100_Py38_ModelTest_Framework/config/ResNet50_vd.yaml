@@ -14,7 +14,7 @@ VARIABLES:
 EXEC:
   exec_cases: [DATA_PROC,TRAIN]
   exec_priority: [p0]
-  exec_tag: [sing_card, multi_card4]
+  exec_tag: $EXEC_TAG
 
 GIT:
   addr: $ClAS_ADDR
@@ -24,6 +24,7 @@ GIT:
 DATA_PROC:
   -
     priority: p0
+    tag: linux_download_data
     run:
       -
         path: $ROOT_PATH/dataset #脚本的路径
@@ -32,7 +33,7 @@ DATA_PROC:
 TRAIN:
   -
     priority: p0
-    tag: sing_card
+    tag: linux_dy_gpu1
     env:
       CUDA_VISIBLE_DEVICES: 1
     run:
@@ -52,7 +53,7 @@ TRAIN:
 
   -
     priority: p0
-    tag: multi_card4
+    tag: linux_dy_gpu4
     env:
       NCCL_SHM_DISABLE: 1
       CUDA_VISIBLE_DEVICES: 1, 2, 3, 4

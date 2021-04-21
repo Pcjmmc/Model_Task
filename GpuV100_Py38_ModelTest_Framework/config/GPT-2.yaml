@@ -16,12 +16,13 @@ VARIABLES:
 EXEC:
   exec_cases: [DATA_PROC,TRAIN]
   exec_priority: [p0]
-  exec_tag: [single_card, multi_card4]
+  exec_tag: $EXEC_TAG
 
 #测试套
 DATA_PROC:
   -
     priority: p0
+    tag: linux_download_data
     run:
       -
         path: $ROOT_PATH/$model_scripts_path
@@ -30,7 +31,7 @@ DATA_PROC:
 TRAIN: # 训练步骤
   -
     priority: p0
-    tag: "single_card"
+    tag: linux_dy_gpu1
     env: #去掉，自动调度
       CUDA_VISIBLE_DEVICES: 1
     run:
