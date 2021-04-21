@@ -8,7 +8,7 @@ VARIABLES:
 EXEC:
   exec_cases: [DATA_PROC,TRAIN]
   exec_priority: [p0]
-  exec_tag: [sing_card]
+  exec_tag: $EXEC_TAG
 
 GIT:
   addr: $SEG_ADDR
@@ -18,6 +18,7 @@ GIT:
 DATA_PROC:
   -
     priority: p0
+    tag: win_download_data
     run:
       -
         path: $ROOT_PATH/scripts/deeplabv3 #脚本的路径
@@ -26,7 +27,7 @@ DATA_PROC:
 TRAIN:
   -
     priority: p0
-    tag: sing_card
+    tag: win_dy_gpu1
     env:
       CUDA_VISIBLE_DEVICES: 0
     run:
