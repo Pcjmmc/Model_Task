@@ -1,4 +1,4 @@
-export seg_dir=$PWD/../../detection_repo
+export seg_dir=$PWD/../../detection_repo/static
 # export data_path=$PWD/../../dataset
 # # 数据存储路径
 # mkdir -p ${seg_dir}/data/
