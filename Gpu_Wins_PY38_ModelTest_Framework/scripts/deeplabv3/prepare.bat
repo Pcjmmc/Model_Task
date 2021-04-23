@@ -1,5 +1,6 @@
 @echo off
 cd ../..
+md log/deeplabv3
 cd seg_repo
 rd /s /q data
 md data

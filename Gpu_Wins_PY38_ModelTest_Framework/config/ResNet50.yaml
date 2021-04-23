@@ -4,6 +4,7 @@ PRIORITY: p0
 
 VARIABLES:
   gpu_log_name: "ResNet50_gpu.log"
+  model_log_path: log/ResNet50
 
 EXEC:
   exec_cases: [DATA_PROC,TRAIN]
@@ -34,7 +35,7 @@ TRAIN:
       -
         # 进入一下路径在一下路径下执行命令
         path: $ROOT_PATH/clas_repo/
-        cmd:  python tools/train.py -c configs/ResNet/ResNet50.yaml -o pretrained_model="" -o epochs=10 -o TRAIN.batch_size=16 -o use_gpu=True -o validate=False > $gpu_log_name 2>&1
+        cmd:  python tools/train.py -c configs/ResNet/ResNet50.yaml -o pretrained_model="" -o epochs=10 -o TRAIN.batch_size=16 -o use_gpu=True -o validate=False > $ROOT_PATH/$model_log_path/$gpu_log_name 2>&1
     kpis:
       loss:
         latest: True
@@ -43,4 +44,4 @@ TRAIN:
         threshold: 0.01
         evaluation: "-"
         unit_repr: None
-    output: $ROOT_PATH/clas_repo/$gpu_log_name
+    output: $ROOT_PATH/$model_log_path/$gpu_log_name
