@@ -22,7 +22,7 @@ DATA_PROC:
     run:
       -
         path: $ROOT_PATH/$model_scripts_path
-        cmd: sh data_proc.sh
+        cmd: bash data_proc.sh
 
 TRAIN: # 训练步骤
   #pretrain
@@ -50,7 +50,7 @@ TRAIN: # 训练步骤
     run:
       -
         path: $ROOT_PATH/$model_scripts_path
-        cmd: sh train.sh 'multi' $SET_MULTI_CUDA
+        cmd: bash train.sh 'multi' $SET_MULTI_CUDA
 
     kpis: #kpi指标
       loss:
@@ -69,7 +69,7 @@ TRAIN: # 训练步骤
     run:
       -
         path: $ROOT_PATH/$model_scripts_path
-        cmd: sh finetune.sh 'SST-2' $SET_CUDA
+        cmd: bash finetune.sh 'SST-2' $SET_CUDA
 
     kpis: #kpi指标
       acc:
@@ -87,7 +87,7 @@ TRAIN: # 训练步骤
     run:
       -
         path: $ROOT_PATH/$model_scripts_path
-        cmd: sh finetune.sh 'QNLI' $SET_CUDA
+        cmd: bash finetune.sh 'QNLI' $SET_CUDA
 
     kpis: #kpi指标
       acc:
@@ -105,7 +105,7 @@ TRAIN: # 训练步骤
     run:
       -
         path: $ROOT_PATH/$model_scripts_path
-        cmd: sh finetune.sh 'CoLA' $SET_CUDA
+        cmd: bash finetune.sh 'CoLA' $SET_CUDA
 
     kpis: #kpi指标
       acc:
@@ -123,7 +123,7 @@ TRAIN: # 训练步骤
     run:
       -
         path: $ROOT_PATH/$model_scripts_path
-        cmd: sh finetune.sh 'MRPC' $SET_CUDA
+        cmd: bash finetune.sh 'MRPC' $SET_CUDA
 
     kpis: #kpi指标
       f1:
@@ -148,7 +148,7 @@ TRAIN: # 训练步骤
     run:
       -
         path: $ROOT_PATH/$model_scripts_path
-        cmd: sh finetune.sh 'STS-B' $SET_CUDA
+        cmd: bash finetune.sh 'STS-B' $SET_CUDA
 
     kpis: #kpi指标
       pearson:
@@ -173,7 +173,7 @@ TRAIN: # 训练步骤
     run:
       -
         path: $ROOT_PATH/$model_scripts_path
-        cmd: sh finetune.sh 'QQP' $SET_CUDA
+        cmd: bash finetune.sh 'QQP' $SET_CUDA
 
     kpis: #kpi指标
       acc:
@@ -191,7 +191,7 @@ TRAIN: # 训练步骤
     run:
       -
         path: $ROOT_PATH/$model_scripts_path
-        cmd: sh finetune.sh 'MNLI' $SET_CUDA
+        cmd: bash finetune.sh 'MNLI' $SET_CUDA
 
     kpis: #kpi指标
       acc:
@@ -209,7 +209,7 @@ TRAIN: # 训练步骤
     run:
       -
         path: $ROOT_PATH/$model_scripts_path
-        cmd: sh finetune.sh 'RTE' $SET_CUDA
+        cmd: bash finetune.sh 'RTE' $SET_CUDA
 
     kpis: #kpi指标
       acc:
@@ -230,7 +230,7 @@ INFER:
     run:
       -
         path: $ROOT_PATH/$model_scripts_path
-        cmd: sh infer.sh
+        cmd: bash infer.sh
     kpis:
       exit_code:
         latest: True
