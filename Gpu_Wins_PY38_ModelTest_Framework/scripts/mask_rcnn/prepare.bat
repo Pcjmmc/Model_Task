@@ -1,6 +1,6 @@
 @echo off
 cd ../..
-md log/mask_rcnn
+md log\mask_rcnn
 cd detection_repo
 cd static
 rd /s /q dataset
