@@ -7,7 +7,7 @@ GIT:
 
 VARIABLES:
   model_scripts_path: scripts/bert/ #脚本的路径
-  model_log_path: log/bert/
+  model_log_path: log/bert
 
 EXEC:
   exec_cases: [DATA_PROC, TRAIN, INFER]

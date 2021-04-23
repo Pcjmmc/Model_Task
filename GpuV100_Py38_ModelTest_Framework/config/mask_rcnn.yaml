@@ -9,6 +9,7 @@ ENV:
 VARIABLES:
   single_log_name: "mask_rcnn_single_card.log"
   multi_log_name: "mask_rcnn_multi_card.log"
+  model_log_path: log/mask_rcnn
 
 EXEC:
   exec_cases: [DATA_PROC,TRAIN]
@@ -39,10 +40,10 @@ TRAIN:
       -
         # 进入一下路径在一下路径下执行命令
         path: $ROOT_PATH/detection_repo/static/
-        cmd: python tools/train.py -c configs/mask_rcnn_r50_1x.yml --enable_ce True -o use_gpu=true max_iters=100 TrainReader.shuffle=false > $single_log_name 2>&1
+        cmd: python tools/train.py -c configs/mask_rcnn_r50_1x.yml --enable_ce True -o use_gpu=true max_iters=100 TrainReader.shuffle=false > $ROOT_PATH/$model_log_path/$single_log_name 2>&1
       -
         path: $PROJECT_ROOT/utils
-        cmd: python process_log.py --log_path=$ROOT_PATH/detection_repo/static/$single_log_name --reg="'" --obj=""
+        cmd: python process_log.py --log_path=$ROOT_PATH/$model_log_path/$single_log_name --reg="'" --obj=""
     kpis:
       loss:
         latest: True
@@ -51,7 +52,7 @@ TRAIN:
         threshold: 0.07
         evaluation: "-"
         unit_repr: None
-    output: $ROOT_PATH/detection_repo/static/$single_log_name
+    output: $ROOT_PATH/$model_log_path/$single_log_name
 
   -
     priority: p0
@@ -63,10 +64,10 @@ TRAIN:
       -
         # 进入一下路径在一下路径下执行命令
         path: $ROOT_PATH/detection_repo/static/
-        cmd: python tools/train.py -c configs/mask_rcnn_r50_1x.yml --enable_ce True -o use_gpu=true max_iters=100 TrainReader.shuffle=false > $multi_log_name 2>&1
+        cmd: python tools/train.py -c configs/mask_rcnn_r50_1x.yml --enable_ce True -o use_gpu=true max_iters=100 TrainReader.shuffle=false > $ROOT_PATH/$model_log_path/$multi_log_name 2>&1
       -
         path: $PROJECT_ROOT/utils
-        cmd: python process_log.py --log_path=$ROOT_PATH/detection_repo/static/$multi_log_name --reg="'" --obj=""
+        cmd: python process_log.py --log_path=$ROOT_PATH/$model_log_path/$multi_log_name --reg="'" --obj=""
 
     kpis:
       loss:
@@ -76,4 +77,4 @@ TRAIN:
         threshold: 0.06
         evaluation: "-"
         unit_repr: None
-    output: $ROOT_PATH/detection_repo/static/$multi_log_name
+    output: $ROOT_PATH/$model_log_path/$multi_log_name
