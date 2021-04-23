@@ -10,3 +10,5 @@ paddlenlp
 regex
 sentencepiece
 tqdm
+scikit-learn
+matplotlib
