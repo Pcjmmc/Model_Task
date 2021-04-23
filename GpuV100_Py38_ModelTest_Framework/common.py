@@ -20,3 +20,7 @@ EXEC_TAG = [
     # 补充一些自定义标签
     "linux_download_data"
 ]
+
+SET_CUDA="1"
+
+SET_MULTI_CUDA="0,1,2,3"
