@@ -1,5 +1,5 @@
 MODEL: "bert" # 模型名
-PRIORITY: P0
+PRIORITY: p0
 GIT:
   addr: $NLP_ADDR
   path: $ROOT_PATH/nlp_repo
@@ -46,7 +46,7 @@ TRAIN: # 训练步骤
 
   -
     priority: p1
-    tag: linux_dy_gpu2
+    tag: linux_dy_gpu4
     run:
       -
         path: $ROOT_PATH/$model_scripts_path

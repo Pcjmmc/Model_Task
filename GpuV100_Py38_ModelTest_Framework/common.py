@@ -18,7 +18,11 @@ EXEC_TAG = [
     "linux_st_gpu1", "linux_st_gpu4",
     "linux_dy_gpu1", "linux_dy_gpu4",
     # 补充一些自定义标签
-    "linux_download_data"
+    "linux_download_data", "linux_finetune_gpu1_SST-2",
+    "linux_finetune_gpu1_QNLI", "linux_finetune_gpu1_CoLA",
+    "linux_finetune_gpu1_MRPC", "linux_finetune_gpu1_STS-B",
+    "linux_finetune_gpu1_QQP", "linux_finetune_gpu1_MNLI",
+    "linux_finetune_gpu1_RTE", 
 ]
 
 SET_CUDA="1"
