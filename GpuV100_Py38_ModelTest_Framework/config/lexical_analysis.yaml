@@ -40,7 +40,7 @@ TRAIN: # 训练步骤
       precision:
         latest: True
         kpi_base: 0.5098
-        threshold: 0.01
+        threshold: 0.02
         actived: True
         evaluation: "-"
         unit_repr: "s"
