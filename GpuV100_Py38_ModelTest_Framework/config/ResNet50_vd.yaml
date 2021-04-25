@@ -45,6 +45,7 @@ TRAIN:
     tag: linux_dy_gpu1
     env:
       CUDA_VISIBLE_DEVICES: 1
+      FLAGS_cudnn_deterministic: True
     run:
       -
         # 进入一下路径在一下路径下执行命令
@@ -66,6 +67,7 @@ TRAIN:
     env:
       NCCL_SHM_DISABLE: 1
       CUDA_VISIBLE_DEVICES: 1, 2, 3, 4
+      FLAGS_cudnn_deterministic: True
     run: 
       -
         # 进入一下路径在一下路径下执行命令
