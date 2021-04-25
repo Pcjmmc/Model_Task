@@ -48,8 +48,8 @@ TRAIN:
       loss:
         latest: True
         actived: True
-        kpi_base: 1.646840
-        threshold: 0.2
+        kpi_base: 1.011
+        threshold: 0.05
         evaluation: "-"
         unit_repr: None
     output: $ROOT_PATH/$model_log_path/$single_log_name
@@ -72,8 +72,8 @@ TRAIN:
       loss:
         latest: True
         actived: True
-        kpi_base: 1.65584
-        threshold: 0.2
+        kpi_base: 1.0965
+        threshold: 0.05
         evaluation: "-"
         unit_repr: None
     output: $ROOT_PATH/$model_log_path/$multi_log_name

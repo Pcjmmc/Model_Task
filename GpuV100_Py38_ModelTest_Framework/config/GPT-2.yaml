@@ -47,21 +47,21 @@ TRAIN: # 训练步骤
         evaluation: "-"
         unit_repr: "s"
     output: $ROOT_PATH/$model_log_path/single_card_train.log
-  # -
-  #   priority: p1
-  #   tag: "multi_card2"
-  #   env: #去掉，自动调度
-  #     CUDA_VISIBLE_DEVICES: 1,2
-  #   run:
-  #     -
-  #       path: $ROOT_PATH/$model_scripts_path
-  #       cmd: bash train.sh 'multi' 'gpu' '1,2'
-  #   kpis: #kpi指标
-  #     loss:
-  #       latest: True
-  #       kpi_base: 10.984482
-  #       threshold: 0.01
-  #       actived: True
-  #       evaluation: "-"
-  #       unit_repr: "s"
-  #   output:  $ROOT_PATH/$model_log_path/multi_cards_train.log
+  -
+    priority: p1
+    tag: linux_dy_gpu4
+    env: #去掉，自动调度
+      CUDA_VISIBLE_DEVICES: 1, 2, 3, 4
+    run:
+      -
+        path: $ROOT_PATH/$model_scripts_path
+        cmd: bash train.sh 'multi' 'gpu' '1, 2, 3, 4'
+    kpis: #kpi指标
+      loss:
+        latest: True
+        kpi_base: 10.984482
+        threshold: 0.01
+        actived: True
+        evaluation: "-"
+        unit_repr: "s"
+    output:  $ROOT_PATH/$model_log_path/multi_cards_train.log
