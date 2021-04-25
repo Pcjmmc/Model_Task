@@ -27,6 +27,9 @@ DATA_PROC:
       -
         path: $ROOT_PATH
         cmd: mkdir -p $ROOT_PATH/$model_log_path
+      -
+        path: $ROOT_PATH/Resnet
+        cmd: cp -rf ResNet50.yaml $ROOT_PATH/clas_repo/configs/ResNet/
 
 TRAIN:
   -
