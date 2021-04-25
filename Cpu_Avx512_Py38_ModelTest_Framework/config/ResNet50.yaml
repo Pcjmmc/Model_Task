@@ -47,7 +47,7 @@ TRAIN:
         latest: True
         actived: True
         kpi_base: 6.73981
-        threshold: 0.02
+        threshold: 0.03
         evaluation: "-"
         unit_repr: None
     output: $ROOT_PATH/$model_log_path/$cpu_log_name
