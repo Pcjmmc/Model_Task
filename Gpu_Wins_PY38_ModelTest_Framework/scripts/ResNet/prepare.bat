@@ -1,7 +1,7 @@
 @echo off
 cd ../..
-xcopy /y /c /h /r .\ResNet50\ResNet50.yaml  .\clas_repo\configs\ResNet
-xcopy /y /c /h /r .\ResNet50\ResNet50_vd.yaml  .\clas_repo\configs\ResNet
+xcopy /y /c /h /r .\Resnet\ResNet50.yaml  .\clas_repo\configs\ResNet
+xcopy /y /c /h /r .\Resnet\ResNet50_vd.yaml  .\clas_repo\configs\ResNet
 md log\ResNet50_vd
 md log\ResNet50
 cd clas_repo
