@@ -77,7 +77,7 @@ TRAIN: # 训练步骤
         kpi_base: 0.5860
         threshold: 0.01
         actived: True
-        evaluation: "-"
+        evaluation: "+"
         unit_repr: "s"
     output: $ROOT_PATH/$model_log_path/SST-2-_fine-tune.log
 
@@ -95,7 +95,7 @@ TRAIN: # 训练步骤
         kpi_base: 0.6797
         threshold: 0.01
         actived: True
-        evaluation: "-"
+        evaluation: "+"
         unit_repr: "s"
     output: $ROOT_PATH/$model_log_path/QNLI-_fine-tune.log
 
@@ -113,7 +113,7 @@ TRAIN: # 训练步骤
         kpi_base: 0.0001
         threshold: 1
         actived: True
-        evaluation: "-"
+        evaluation: "+"
         unit_repr: "s"
     output: $ROOT_PATH/$model_log_path/CoLA-_fine-tune.log
 
@@ -131,14 +131,14 @@ TRAIN: # 训练步骤
         kpi_base: 0.81287
         threshold: 0.01
         actived: True
-        evaluation: "-"
+        evaluation: "+"
         unit_repr: "s"
       acc:
         latest: True
         kpi_base: 0.6863
         threshold: 0.01
         actived: True
-        evaluation: "-"
+        evaluation: "+"
         unit_repr: "s"
     output: $ROOT_PATH/$model_log_path/MRPC-_fine-tune.log
 
@@ -156,14 +156,14 @@ TRAIN: # 训练步骤
         kpi_base: 0.27724463321910015
         threshold: 0.01
         actived: True
-        evaluation: "-"
+        evaluation: "+"
         unit_repr: "s"
       spearman:
         latest: True
         kpi_base: 0.19406690225195655
         threshold: 0.01
         actived: True
-        evaluation: "-"
+        evaluation: "+"
         unit_repr: "s"
     output: $ROOT_PATH/$model_log_path/STS-B-_fine-tune.log
 
@@ -181,7 +181,7 @@ TRAIN: # 训练步骤
         kpi_base: 0.631288647044274
         threshold: 0.001
         actived: True
-        evaluation: "-"
+        evaluation: "+"
         unit_repr: "s"
     output: $ROOT_PATH/$model_log_path/QQP-_fine-tune.log
 
@@ -199,7 +199,7 @@ TRAIN: # 训练步骤
         kpi_base: 0.3846
         threshold: 0.01
         actived: True
-        evaluation: "-"
+        evaluation: "+"
         unit_repr: "s"
     output: $ROOT_PATH/$model_log_path/MNLI-_fine-tune.log
 
@@ -217,7 +217,7 @@ TRAIN: # 训练步骤
         kpi_base: 0.5776
         threshold: 0.01
         actived: True
-        evaluation: "-"
+        evaluation: "+"
         unit_repr: "s"
     output: $ROOT_PATH/$model_log_path/RTE-_fine-tune.log
 
