@@ -29,7 +29,7 @@ if [[ $1 == 'multi' ]];then #多卡
         --warmup_rate 0.01\
         --batch_size 8\
         --device gpu > $log_path/multi_cards_train.log 2>&1
-else #单卡或CPU
+else #单卡
     python run_pretrain.py --model_type gpt2\
         --model_name_or_path gpt2-small-en\
         --input_dir "./data"\

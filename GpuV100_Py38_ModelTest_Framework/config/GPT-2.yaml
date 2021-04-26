@@ -50,12 +50,11 @@ TRAIN: # 训练步骤
   -
     priority: p1
     tag: linux_dy_gpu4
-    env: #去掉，自动调度
-      CUDA_VISIBLE_DEVICES: 1, 2, 3, 4
+
     run:
       -
         path: $ROOT_PATH/$model_scripts_path
-        cmd: bash train.sh 'multi' 'gpu' '1, 2, 3, 4'
+        cmd: bash train.sh 'multi' 'gpu' $SET_MULTI_CUDA
     kpis: #kpi指标
       loss:
         latest: True
