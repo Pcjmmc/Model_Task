@@ -17,6 +17,7 @@ PADDLE_ON_MODEL_CE = "1"
 EXEC_TAG = [
     "linux_st_gpu1", "linux_st_gpu4",
     "linux_dy_gpu1", "linux_dy_gpu4",
+    "linux_st_gpu8", "linux_dy_gpu8",
     # 补充一些自定义标签
     "linux_download_data", "linux_finetune_gpu1_SST-2",
     "linux_finetune_gpu1_QNLI", "linux_finetune_gpu1_CoLA",
