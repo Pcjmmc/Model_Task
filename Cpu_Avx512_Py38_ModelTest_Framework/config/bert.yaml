@@ -1,0 +1,49 @@
+MODEL: "bert" # 模型名
+PRIORITY: P0
+GIT:
+  addr: $REPO_PaddleNLP
+  path: $ROOT_PATH/nlp_repo
+
+ENV:
+  http_proxy: $HTTP_PROXY
+  https_proxy: $HTTPS_PROXY
+  PADDLE_ON_MODEL_CE: $PADDLE_ON_MODEL_CE
+
+VARIABLES:
+  model_scripts_path: scripts/bert/ #脚本的路径
+  model_log_path: log/bert/
+
+EXEC:
+  exec_cases: [DATA_PROC, TRAIN, INFER]
+  exec_priority: [p0,p1]
+  exec_tag: $EXEC_TAG
+
+#测试套
+DATA_PROC:
+  -
+    priority: p0
+    tag: linux_download_data
+    run:
+      -
+        path: $ROOT_PATH/$model_scripts_path
+        cmd: sh data_proc.sh
+
+TRAIN: # 训练步骤
+  #pretrain
+  -
+    priority: p0
+    tag: linux_dy_cpu
+    run:
+      -
+        path: $ROOT_PATH/$model_scripts_path
+        cmd: sh train.sh $XPU
+
+    kpis: #kpi指标
+      loss:
+        latest: True
+        kpi_base: 11.921639  # 待定
+        threshold: 0.001
+        actived: True
+        evaluation: "-"
+        unit_repr: "s"
+    output: $ROOT_PATH/$model_log_path/train_$XPU.log
