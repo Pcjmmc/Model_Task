@@ -1,7 +1,7 @@
 MODEL: "SQuAD" # 模型名
 PRIORITY: p0
 GIT:
-  addr: $REPO_PaddleNLP
+  addr: $NLP_ADDR
   path: $ROOT_PATH/nlp_repo
 
 ENV:

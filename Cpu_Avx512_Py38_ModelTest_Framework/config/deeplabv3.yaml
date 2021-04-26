@@ -1,6 +1,6 @@
 MODEL: "deeplabv3"
 
-PRIORITY: p0_delay  #波动太大，又不能迭代很久
+PRIORITY: p0  #波动太大，又不能迭代很久
 
 VARIABLES:
   cpu_log_name: "deeplabv3_cpu.log"
