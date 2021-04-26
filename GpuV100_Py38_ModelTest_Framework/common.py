@@ -29,3 +29,5 @@ EXEC_TAG = [
 SET_CUDA="1"
 
 SET_MULTI_CUDA="0,1,2,3"
+
+XPU="gpu"
