@@ -9,7 +9,7 @@ NLP_ADDR = "https://github.com/PaddlePaddle/PaddleNLP.git"
 SEG_ADDR  = "https://github.com/PaddlePaddle/PaddleSeg.git"
 ClAS_ADDR = "https://github.com/PaddlePaddle/PaddleClas.git"
 DETECTION_ADDR = "https://github.com/PaddlePaddle/PaddleDetection.git"
-
+XPU = "cpu"
 EXEC_TAG = [
     "linux_dy_cpu",
     "linux_st_cpu",

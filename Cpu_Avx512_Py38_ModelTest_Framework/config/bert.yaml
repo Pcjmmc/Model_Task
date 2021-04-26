@@ -7,7 +7,6 @@ GIT:
 ENV:
   http_proxy: $HTTP_PROXY
   https_proxy: $HTTPS_PROXY
-  PADDLE_ON_MODEL_CE: $PADDLE_ON_MODEL_CE
 
 VARIABLES:
   model_scripts_path: scripts/bert/ #脚本的路径
