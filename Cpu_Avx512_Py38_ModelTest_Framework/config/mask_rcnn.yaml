@@ -1,6 +1,6 @@
 MODEL: "MaskRCNN"
 
-PRIORITY: p0_test
+PRIORITY: p0
 
 VARIABLES:
   cpu_log_name: "mask_rcnn_cpu.log"

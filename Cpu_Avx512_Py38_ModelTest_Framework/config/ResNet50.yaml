@@ -1,6 +1,6 @@
 MODEL: "ResNet50"
 
-PRIORITY: p0_test
+PRIORITY: p0
 
 VARIABLES:
   cpu_log_name: "ResNet50_cpu.log"
