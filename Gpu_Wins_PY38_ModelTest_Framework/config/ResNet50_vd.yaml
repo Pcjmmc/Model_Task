@@ -41,7 +41,7 @@ TRAIN:
         latest: True
         actived: True
         kpi_base: 6.18675
-        threshold: 0.005
+        threshold: 0.002
         evaluation: "-"
         unit_repr: None
     output: $ROOT_PATH/$model_log_path/$gpu_log_name
