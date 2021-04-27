@@ -10,3 +10,4 @@ pycocotools==2.0.2
 scikit-learn
 matplotlib
 h5py
+paddlenlp
