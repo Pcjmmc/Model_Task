@@ -72,7 +72,7 @@ TRAIN:
       -
         # 进入一下路径在一下路径下执行命令
         path: $ROOT_PATH/clas_repo/
-        cmd: python tools/train.py -c configs/ResNet/ResNet50_vd.yaml -o use_mix=False -o pretrained_model="" -o epochs=30 -o TRAIN.batch_size=128 -o use_gpu=True -o validate=False > $ROOT_PATH/$model_log_path/$multi_log_name 2>&1
+        cmd: python -m paddle.distributed.launch tools/train.py -c configs/ResNet/ResNet50_vd.yaml -o use_mix=False -o pretrained_model="" -o epochs=30 -o TRAIN.batch_size=128 -o use_gpu=True -o validate=False > $ROOT_PATH/$model_log_path/$multi_log_name 2>&1
     kpis:
       loss:
         latest: True

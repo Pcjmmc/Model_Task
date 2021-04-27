@@ -12,3 +12,5 @@ sentencepiece
 tqdm
 scikit-learn
 matplotlib
+visualdl >= 2.0.0b
+ujson
