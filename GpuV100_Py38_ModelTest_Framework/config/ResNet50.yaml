@@ -54,7 +54,7 @@ TRAIN:
         latest: True
         actived: True
         kpi_base: 4.43523
-        threshold: 0.05
+        threshold: 0.02
         evaluation: "-"
         unit_repr: None
     output: $ROOT_PATH/$model_log_path/$single_log_name
@@ -76,7 +76,7 @@ TRAIN:
         latest: True
         actived: True
         kpi_base: 4.43523
-        threshold: 0.05
+        threshold: 0.02
         evaluation: "-"
         unit_repr: None
     output: $ROOT_PATH/$model_log_path/$multi_log_name
