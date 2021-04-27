@@ -48,7 +48,7 @@ if [[ $1 == 'gpu' ]];then #GPU
     print_info $? train_$2_$1
 
 else # cpu
-    python run_pretrain.py \
+    python -m paddle.distributed.launch  run_pretrain.py \
     --model_type bert \
     --model_name_or_path bert-base-uncased \
     --max_predictions_per_seq 20 \

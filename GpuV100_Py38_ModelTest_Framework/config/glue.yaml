@@ -30,7 +30,7 @@ TRAIN: # 训练步骤
     run:
       -
         path: $ROOT_PATH/$model_scripts_path
-        cmd: sh train.sh $XPU 'single' 'bert' 'bert-base-uncased' 'SST-2'
+        cmd: bash train.sh $XPU 'single' 'bert' 'bert-base-uncased' 'SST-2'
 
     kpis: #kpi指标
       acc:
