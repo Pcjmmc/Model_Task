@@ -25,8 +25,8 @@ sed -ie '/flip_code/d' configs/HRNet/HRNet_W18_C.yaml
 
 if [[ $2 == 'multi' ]];then #多卡
   python -m paddle.distributed.launch tools/train.py -c configs/HRNet/HRNet_W18_C.yaml -o epochs=5 -o TRAIN.batch_size=64 -o validate=False > $log_path/train_$2_$1.log 2>&1
-  cat $log_path/train_$2_$1.log | grep " END epoch:4" > $log_path/train_$2_$1.log
+  # cat $log_path/train_$2_$1.log | grep " END epoch:4" >> $log_path/train_$2_$1.log
 else #单卡
   python tools/train.py -c configs/HRNet/HRNet_W18_C.yaml -o epochs=5 -o TRAIN.batch_size=64 -o validate=False > $log_path/train_$2_$1.log 2>&1
-  cat $log_path/train_$2_$1.log | grep " END epoch:4" > $log_path/train_$2_$1.log
+  # cat $log_path/train_$2_$1.log | grep " END epoch:4" >> $log_path/train_$2_$1.log
 fi

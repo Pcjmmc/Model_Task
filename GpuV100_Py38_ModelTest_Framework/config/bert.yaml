@@ -1,5 +1,5 @@
 MODEL: "bert" # 模型名
-PRIORITY: p0
+PRIORITY: p0_test
 GIT:
   addr: $NLP_ADDR
   path: $ROOT_PATH/nlp_repo
