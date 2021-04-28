@@ -44,13 +44,13 @@ TRAIN: # 训练步骤
     kpis: #kpi指标
       loss:
         latest: True
-        kpi_base: 6.24887
+        kpi_base: 6.18547
         threshold: 0.05
         actived: True
         evaluation: "-"
     output: $ROOT_PATH/$model_log_path/train_single_$XPU.log
   -
-    priority: P0  # dy_gpu1
+    priority: p0  # dy_gpu1
     tag: linux_dy_gpu4
     env: #去掉，自动调度
       CUDA_VISIBLE_DEVICES: $SET_MULTI_CUDA  #取值为None，则不设置
