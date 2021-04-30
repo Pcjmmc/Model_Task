@@ -1,0 +1,49 @@
+MODEL: "HRNet_W18_C" # 模型名
+PRIORITY: p0
+GIT:
+  addr: $ClAS_ADDR
+  path: $ROOT_PATH/clas_repo
+
+
+VARIABLES:
+  gpu_log_name: HRNet_W18_C_gpu.log
+  model_log_path: log/HRNet_W18_C
+
+EXEC:
+  exec_cases: [DATA_PROC, TRAIN]
+  exec_priority: [p0]
+  exec_tag: $EXEC_TAG
+
+#测试套 
+DATA_PROC:
+  -
+    priority: p0
+    tag: win_download_data
+    run:
+      -
+        path: $ROOT_PATH/scripts/HRNet_W18_c #脚本的路径
+        cmd: prepare.bat
+
+#测试套
+TRAIN: # 训练步骤
+  -
+    priority: p0
+    tag: win_dy_gpu1
+    env:
+      CUDA_VISIBLE_DEVICES: 0
+      FLAGS_cudnn_deterministic: True
+    run:
+      -
+        # 进入一下路径在一下路径下执行命令
+        path: $ROOT_PATH/clas_repo/
+        cmd:  python tools/train.py -c configs/HRNet/HRNet_W18_C.yaml -o use_mix=False -o pretrained_model="" -o epochs=10 -o TRAIN.batch_size=16 -o use_gpu=True -o validate=False > $ROOT_PATH/$model_log_path/$gpu_log_name 2>&1
+    kpis:
+      loss:
+        latest: True
+        actived: True
+        kpi_base: 6.18675
+        threshold: 0.002
+        evaluation: "-"
+        unit_repr: None
+    output: $ROOT_PATH/$model_log_path/$gpu_log_name
+

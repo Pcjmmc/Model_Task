@@ -1,6 +1,6 @@
 MODEL: "deeplabv3"
 
-PRIORITY: p0_delay
+PRIORITY: p0
 
 VARIABLES:
   gpu_log_name: "deeplabv3_gpu.log"
