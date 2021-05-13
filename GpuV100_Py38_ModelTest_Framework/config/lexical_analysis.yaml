@@ -54,7 +54,7 @@ TRAIN: # 训练步骤
       f1:
         latest: True
         kpi_base: 0.5438
-        threshold: 0.01
+        threshold: 0.02
         actived: True
         evaluation: "+"
         unit_repr: "s"
