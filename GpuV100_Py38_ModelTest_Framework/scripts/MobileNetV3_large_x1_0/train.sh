@@ -26,7 +26,7 @@ sed -ie '/flip_code/d' configs/MobileNetV3/MobileNetV3_large_x1_0.yaml
 # sed -i '46,47d' configs/MobileNetV3/MobileNetV3_large_x1_0.yaml
 
 if [[ $2 == 'multi' ]];then #多卡
-  python -m paddle.distributed.launch tools/train.py -c configs/MobileNetV3/MobileNetV3_large_x1_0.yaml -o epochs=5 -o TRAIN.batch_size=64 -o validate=False -o LEARNING_RATE.params.lr=0.65 > $log_path/train_$2_$1.log 2>&1
+  python -m paddle.distributed.launch tools/train.py -c configs/MobileNetV3/MobileNetV3_large_x1_0.yaml -o epochs=6 -o TRAIN.batch_size=64 -o validate=False -o LEARNING_RATE.params.lr=0.65 > $log_path/train_$2_$1.log 2>&1
 else #单卡
-  python tools/train.py -c configs/MobileNetV3/MobileNetV3_large_x1_0.yaml -o epochs=5 -o TRAIN.batch_size=64 -o validate=False -o LEARNING_RATE.params.lr=0.65 > $log_path/train_$2_$1.log 2>&1
+  python tools/train.py -c configs/MobileNetV3/MobileNetV3_large_x1_0.yaml -o epochs=6 -o TRAIN.batch_size=64 -o validate=False -o LEARNING_RATE.params.lr=0.65 > $log_path/train_$2_$1.log 2>&1
 fi
