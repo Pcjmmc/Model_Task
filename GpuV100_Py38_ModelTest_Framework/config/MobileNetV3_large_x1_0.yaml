@@ -1,5 +1,5 @@
 MODEL: "MobileNetV3_large_x1_0" # 模型名
-PRIORITY: p0
+PRIORITY: P0
 GIT:
   addr: $ClAS_ADDR
   path: $ROOT_PATH/clas_repo

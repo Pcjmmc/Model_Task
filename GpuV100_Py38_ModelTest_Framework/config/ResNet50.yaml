@@ -1,6 +1,6 @@
 MODEL: "ResNet50"
 
-PRIORITY: p0
+PRIORITY: P0
 
 ENV:
   http_proxy: http://172.19.57.45:3128

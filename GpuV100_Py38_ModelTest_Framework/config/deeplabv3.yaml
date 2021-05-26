@@ -1,10 +1,6 @@
 MODEL: "DeepLabv3"
 
-PRIORITY: p0_delay
-
-ENV:
-  http_proxy: http://172.19.57.45:3128
-  https_proxy: http://172.19.57.45:3128
+PRIORITY: P0
 
 VARIABLES:
   single_log_name: "deeplabv3_single_card.log"
@@ -40,18 +36,25 @@ TRAIN:
       -
         # 进入一下路径在一下路径下执行命令
         path: $ROOT_PATH/seg_repo/
-        cmd: python train.py --config configs/deeplabv3/deeplabv3_resnet101_os8_cityscapes_1024x512_80k.yml --iters 3000 > $ROOT_PATH/$model_log_path/$single_log_name 2>&1
+        cmd: python train.py --config configs/deeplabv3/deeplabv3p_resnet50_os8_cityscapes_1024x512_80k.yml --iters 2000 > $ROOT_PATH/$model_log_path/$single_log_name 2>&1
       -
         path: $PROJECT_ROOT/utils
         cmd: python process_log.py --log_path=$ROOT_PATH/$model_log_path/$single_log_name --reg="=" --obj=':'
     kpis:
       loss:
         latest: True
+        kpi_base: 0.7510
+        threshold: 0.1
         actived: True
-        kpi_base: 1.011
-        threshold: 0.05
         evaluation: "-"
         unit_repr: None
+      ips:
+        latest: True
+        kpi_base: 3.0780
+        threshold: 0.03
+        actived: True
+        evaluation: "+"
+        unit_repr: "images/s"
     output: $ROOT_PATH/$model_log_path/$single_log_name
 
   -
@@ -64,16 +67,23 @@ TRAIN:
       -
         # 进入一下路径在一下路径下执行命令
         path: $ROOT_PATH/seg_repo/
-        cmd: python train.py  --config configs/deeplabv3/deeplabv3_resnet101_os8_cityscapes_1024x512_80k.yml --iters 3000 > $ROOT_PATH/$model_log_path/$multi_log_name 2>&1
+        cmd: python train.py  --config configs/deeplabv3/deeplabv3p_resnet50_os8_cityscapes_1024x512_80k.yml --iters 2000 > $ROOT_PATH/$model_log_path/$multi_log_name 2>&1
       -
         path: $PROJECT_ROOT/utils
         cmd: python process_log.py --log_path=$ROOT_PATH/$model_log_path/$multi_log_name --reg="=" --obj=":"
     kpis:
       loss:
         latest: True
+        kpi_base: 0.2701
+        threshold: 0.09
         actived: True
-        kpi_base: 1.0385
-        threshold: 0.05
         evaluation: "-"
         unit_repr: None
+      ips:
+        latest: True
+        kpi_base: 2.9921
+        threshold: 0.03
+        actived: True
+        evaluation: "+"
+        unit_repr: "images/s"
     output: $ROOT_PATH/$model_log_path/$multi_log_name
