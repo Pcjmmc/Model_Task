@@ -22,7 +22,7 @@ DATA_PROC:
     run:
       -
         path: $ROOT_PATH/$model_scripts_path
-        cmd: sh data_proc.sh
+        cmd: bash data_proc.sh
 
 TRAIN: # 训练步骤
   -
@@ -34,7 +34,7 @@ TRAIN: # 训练步骤
     run:
       -
         path: $ROOT_PATH/$model_scripts_path
-        cmd: sh train.sh 'multi'
+        cmd: bash train.sh 'multi'
 
     kpis: #kpi指标
       loss:
@@ -62,7 +62,7 @@ TRAIN: # 训练步骤
     run:
       -
         path: $ROOT_PATH/$model_scripts_path
-        cmd: sh train.sh 'single'
+        cmd: bash train.sh 'single'
 
     kpis: #kpi指标
       loss:
@@ -91,7 +91,7 @@ EVAL:
     run:
       -
         path: $ROOT_PATH/$model_scripts_path
-        cmd: sh eval.sh 'single'
+        cmd: bash eval.sh 'single'
 
     kpis: #kpi指标
       exit_code:
@@ -112,7 +112,7 @@ EVAL:
     run:
       -
         path: $ROOT_PATH/$model_scripts_path
-        cmd: sh eval.sh 'multi'
+        cmd: bash eval.sh 'multi'
 
     kpis: #kpi指标
       exit_code:
