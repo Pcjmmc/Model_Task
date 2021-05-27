@@ -18,3 +18,4 @@ EXEC_TAG = [
 ]
 
 SET_CUDA="0"
+XPU="gpu"
