@@ -16,3 +16,5 @@ EXEC_TAG = [
     # 补充一些自定义标签
     "win_download_data"
 ]
+
+SET_CUDA="0"
