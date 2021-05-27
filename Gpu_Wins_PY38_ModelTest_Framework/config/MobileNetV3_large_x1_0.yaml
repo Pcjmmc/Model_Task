@@ -1,0 +1,47 @@
+MODEL: "MobileNetV3_large_x1_0" # 模型名
+PRIORITY: P0
+GIT:
+  addr: $ClAS_ADDR
+  path: $ROOT_PATH/clas_repo
+
+VARIABLES:
+  model_scripts_path: scripts/MobileNetV3_large_x1_0/ #脚本的路径
+  model_log_path: log/MobileNetV3_large_x1_0
+
+EXEC:
+  exec_cases: [DATA_PROC, TRAIN]
+  exec_priority: [p0]
+  exec_tag: $EXEC_TAG
+
+
+#测试套 
+DATA_PROC:
+  -
+    priority: p0
+    tag: win_download_data
+    run:
+      -
+        path: $ROOT_PATH/$model_scripts_path #脚本的路径
+        cmd: prepare.bat
+#测试套
+TRAIN: # 训练步骤
+  -
+    priority: p0
+    tag: win_dy_gpu1
+    env:
+      CUDA_VISIBLE_DEVICES: $SET_CUDA  #取值为None，则不设置
+      FLAGS_cudnn_deterministic: True
+
+    run:
+      -
+        path: $ROOT_PATH/clas_repo/
+        cmd: python tools/train.py -c configs/MobileNetV3/MobileNetV3_large_x1_0.yaml -o epochs=6 -o TRAIN.batch_size=64 -o validate=False -o LEARNING_RATE.params.lr=0.65 > $ROOT_PATH/$model_log_path/train_single_$XPU.log 2>&1
+
+    kpis: #kpi指标
+      loss:
+        latest: True
+        kpi_base: 6.75525
+        threshold: 0.05
+        actived: True
+        evaluation: "-"
+    output: $ROOT_PATH/$model_log_path/train_single_$XPU.log

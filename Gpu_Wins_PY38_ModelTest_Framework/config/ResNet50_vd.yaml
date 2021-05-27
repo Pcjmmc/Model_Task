@@ -1,6 +1,6 @@
 MODEL: "ResNet50_vd"
 
-PRIORITY: p0
+PRIORITY: P0
 
 VARIABLES:
   gpu_log_name: "ResNet50_vd_gpu.log"

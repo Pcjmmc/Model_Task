@@ -1,6 +1,6 @@
 MODEL: "MaskRCNN"
 
-PRIORITY: p0
+PRIORITY: P0
 
 VARIABLES:
   log_name: "mask_rcnn_gpu.log"
