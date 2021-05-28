@@ -84,7 +84,7 @@ TRAIN: # 训练步骤
 
 EVAL:
   - #可以有多步
-    priority: p1
+    priority: p0
     tag: linux_dy_gpu1
     env: #去掉，自动调度
       CUDA_VISIBLE_DEVICES: $SET_CUDA
