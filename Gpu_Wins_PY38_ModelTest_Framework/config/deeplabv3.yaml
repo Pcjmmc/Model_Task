@@ -43,7 +43,7 @@ TRAIN:
       loss:
         latest: True
         actived: True
-        kpi_base: 0.6111
+        kpi_base: 0.7775
         threshold: 0.05
         evaluation: "-"
         unit_repr: None
