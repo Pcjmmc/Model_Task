@@ -42,7 +42,7 @@ TRAIN: # 训练步骤
         latest: True
         actived: True
         kpi_base: 5.95728
-        threshold: 0.01
+        threshold: 0.05
         evaluation: "-"
         unit_repr: None
     output: $ROOT_PATH/$model_log_path/$gpu_log_name
