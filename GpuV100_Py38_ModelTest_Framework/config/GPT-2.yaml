@@ -14,7 +14,7 @@ VARIABLES:
   model_log_path: log/GPT-2
 
 EXEC:
-  exec_cases: [DATA_PROC,TRAIN]
+  exec_cases: [DATA_PROC,TRAIN, INFER, EVAL]
   exec_priority: [p0, p1]
   exec_tag: $EXEC_TAG
 
@@ -64,3 +64,43 @@ TRAIN: # 训练步骤
         evaluation: "-"
         unit_repr: "s"
     output:  $ROOT_PATH/$model_log_path/multi_cards_train.log
+
+INFER:
+  - 
+    priority: p1
+    tag: linux_dy_gpu1
+    env: #去掉，自动调度
+        CUDA_VISIBLE_DEVICES: $SET_CUDA
+    run:
+      -
+        path: $ROOT_PATH/$model_scripts_path
+        cmd: bash infer.sh
+    kpis:
+      exit_code:
+        latest: True
+        kpi_base: 0
+        threshold: 0
+        actived: True
+        evaluation: "-"
+        unit_repr: None
+    output: $ROOT_PATH/$model_log_path/infer.log
+
+EVAL:
+  - 
+    priority: p1
+    tag: linux_dy_gpu1
+    env: #去掉，自动调度
+        CUDA_VISIBLE_DEVICES: $SET_CUDA
+    run:
+      -
+        path: $ROOT_PATH/$model_scripts_path
+        cmd: bash eval.sh $XPU
+    kpis:
+      exit_code:
+        latest: True
+        kpi_base: 0
+        threshold: 0
+        actived: True
+        evaluation: "-"
+        unit_repr: None
+    output: $ROOT_PATH/$model_log_path/eval_$XPU.log

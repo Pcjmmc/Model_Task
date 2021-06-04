@@ -4,19 +4,39 @@
 #获取当前路径
 cur_path=`pwd`
 model_name=${PWD##*/}
+
 echo "$model_name 模型训练阶段"
+
+#取消代理
+HTTPPROXY=$http_proxy
+HTTPSPROXY=$https_proxy
+unset http_proxy
+unset https_proxy
 
 #路径配置
 root_path=$cur_path/../../
-code_path=$cur_path/../../nlp_repo/examples/language_model/gpt2/
+code_path=$cur_path/../../nlp_repo/examples/language_model/gpt/
 log_path=$root_path/log/$model_name/
-mkdir -p $log_path
+if [ ! -d $log_path ]; then
+  mkdir -p $log_path
+fi
+
+#删除分布式日志重新记录
+rm -rf $code_path/log/workerlog.0
+
 #访问RD程序
 cd $code_path
-if [[ $1 == 'multi' ]];then #多卡
+
+print_info(){
+if [ $1 -ne 0 ];then
+    cat ${log_path}/$2.log
+fi
+}
+
+if [[ $2 == 'multi' ]];then #GPU单卡多卡
     python -m paddle.distributed.launch --gpus "$3" run_pretrain.py \
-        --model_type gpt2\
-        --model_name_or_path gpt2-small-en\
+        --model_type gpt\
+        --model_name_or_path "gpt2-en"\
         --input_dir "./data"\
         --output_dir "multi_output"\
         --max_lr 0.00015\
@@ -27,11 +47,13 @@ if [[ $1 == 'multi' ]];then #多卡
         --save_steps 10\
         --decay_steps 320000\
         --warmup_rate 0.01\
-        --batch_size 8\
-        --device gpu > $log_path/multi_cards_train.log 2>&1
-else #单卡
-    python run_pretrain.py --model_type gpt2\
-        --model_name_or_path gpt2-small-en\
+        --micro_batch_size 2\
+        --device $1 > $log_path/train_$2_$1.log 2>&1
+    
+    print_info $? train_$2_$1
+else #单卡或cpu
+    python run_pretrain.py --model_type gpt\
+        --model_name_or_path "gpt2-en"\
         --input_dir "./data"\
         --output_dir "output"\
         --max_lr 0.00015\
@@ -42,6 +64,10 @@ else #单卡
         --save_steps 10\
         --decay_steps 320000\
         --warmup_rate 0.01\
-        --batch_size 8\
-        --device gpu > $log_path/single_card_train.log 2>&1
+        --micro_batch_size 2\
+        --device $1 > $log_path/train_$2_$1.log 2>&1
+    print_info $? train_$2_$1
 fi
+
+export http_proxy=$HTTPPROXY
+export https_proxy=$HTTPSPROXY
