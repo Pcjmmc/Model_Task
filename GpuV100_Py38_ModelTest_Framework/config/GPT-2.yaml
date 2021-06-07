@@ -37,7 +37,7 @@ TRAIN: # 训练步骤
     run:
       -
         path: $ROOT_PATH/$model_scripts_path
-        cmd: bash train.sh 'single' 'gpu' 
+        cmd: bash train.sh 'gpu' 'single'
     kpis: #kpi指标
       loss:
         latest: True
@@ -46,7 +46,7 @@ TRAIN: # 训练步骤
         actived: True
         evaluation: "-"
         unit_repr: "s"
-    output: $ROOT_PATH/$model_log_path/single_card_train.log
+    output: $ROOT_PATH/$model_log_path/train_single_gpu.log
   -
     priority: p1
     tag: linux_dy_gpu4
@@ -54,7 +54,7 @@ TRAIN: # 训练步骤
     run:
       -
         path: $ROOT_PATH/$model_scripts_path
-        cmd: bash train.sh 'multi' 'gpu' $SET_MULTI_CUDA
+        cmd: bash train.sh 'gpu' 'multi' $SET_MULTI_CUDA
     kpis: #kpi指标
       loss:
         latest: True
@@ -63,7 +63,7 @@ TRAIN: # 训练步骤
         actived: True
         evaluation: "-"
         unit_repr: "s"
-    output:  $ROOT_PATH/$model_log_path/multi_cards_train.log
+    output:  $ROOT_PATH/$model_log_path/train_multi_gpu.log
 
 INFER:
   - 
